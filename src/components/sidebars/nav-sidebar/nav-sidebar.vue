@@ -154,7 +154,8 @@ aside {
   z-index: 30;
   width: 100%;
   max-width: 80%;
-  background-color: var(--white);
+  background-color: var(--lightest-gray);
+  color: var(--darker-gray);
 
   transform: translateX(-100%);
   visibility: hidden;

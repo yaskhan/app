@@ -93,6 +93,7 @@ input {
 
 label {
   cursor: pointer;
+  color: var(--lighter-gray);
 
   i {
     color: inherit;
@@ -101,11 +102,11 @@ label {
 
   &:hover:not(:disabled),
   .user-is-tabbing &:focus {
-    color: var(--accent);
+    color: var(--darker-gray);
   }
 }
 
 input:checked + label {
-  color: var(--accent);
+  color: var(--darker-gray);
 }
 </style>

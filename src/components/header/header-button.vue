@@ -27,7 +27,7 @@
         line-fg-color="white"
         line-bg-color="transparent"
       />
-      <span class="style-btn" v-if="label">{{ label }}</span>
+      <!-- <span class="style-btn" v-if="label">{{ label }}</span> -->
     </component>
   </div>
 </template>
@@ -42,7 +42,7 @@ export default {
     },
     color: {
       type: String,
-      default: "accent"
+      default: "darker-gray"
     },
     label: {
       type: String,
@@ -90,9 +90,10 @@ export default {
 <style scoped lang="scss">
 .v-header-button {
   position: relative;
-  height: var(--header-height);
-  width: var(--header-height);
+  height: calc(var(--header-height) - 20px);
+  width: calc(var(--header-height) - 20px);
   display: inline-block;
+  margin-left: 20px;
 }
 
 button,
@@ -107,7 +108,8 @@ a {
   align-items: center;
   height: 100%;
   width: 100%;
-  border-radius: 0;
+  border-radius: 100%;
+  overflow: hidden;
   cursor: pointer;
 
   i {
@@ -158,8 +160,11 @@ a {
 }
 
 button.no-bg {
-  border-left: 1px solid #444444;
+  border: 2px solid var(--lighter-gray);
   background-color: transparent;
+  i {
+    color: var(--lighter-gray);
+  }
 }
 
 button[disabled] {

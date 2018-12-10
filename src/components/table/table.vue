@@ -458,7 +458,7 @@ export default {
   display: flex;
   align-items: center;
   padding: 0 20px;
-  border-bottom: 1px solid var(--lightest-gray);
+  border-bottom: 2px solid var(--body-background);
   box-sizing: content-box;
 }
 
@@ -469,6 +469,7 @@ export default {
   top: 0;
   z-index: +1;
   background-color: var(--white);
+  border-color: var(--lightest-gray);
   transition: box-shadow var(--fast) var(--transition-out);
 
   &.shadow {
@@ -540,7 +541,7 @@ export default {
 }
 
 .sort.active {
-  color: var(--gray);
+  color: var(--dark-gray);
 }
 
 .cell {
@@ -575,7 +576,7 @@ export default {
 }
 
 .sort:hover {
-  color: var(--gray);
+  color: var(--darker-gray);
 }
 
 .sort > i {

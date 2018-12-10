@@ -164,21 +164,21 @@ export default {
   transform: translateY(calc(100% - var(--header-height)));
   transition: transform var(--medium) var(--transition-out);
   will-change: transform;
-  background-color: var(--white);
+  background-color: var(--lightest-gray);
 
-  &:before {
-    pointer-events: none;
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 5px;
-    left: 0;
-    right: 0;
-    top: -4px;
-    opacity: 0;
-    transition: opacity var(--fast) var(--transition);
-    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
-  }
+  // &:before {
+  //   pointer-events: none;
+  //   content: "";
+  //   position: absolute;
+  //   width: 100%;
+  //   height: 5px;
+  //   left: 0;
+  //   right: 0;
+  //   top: -4px;
+  //   opacity: 0;
+  //   transition: opacity var(--fast) var(--transition);
+  //   background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
+  // }
 
   @media (min-width: 800px) {
     box-shadow: 1px 0 0 0 var(--lightest-gray);
@@ -198,10 +198,10 @@ export default {
   header {
     position: sticky;
     top: 0;
-    background-color: var(--white);
+    background-color: var(--lightest-gray);
     padding: 10px 10px 10px 0;
-    border-top: 1px solid var(--lightest-gray);
-    border-bottom: 1px solid var(--lightest-gray);
+    border-top: 2px solid var(--lighter-gray);
+    border-bottom: 2px solid var(--lighter-gray);
     margin-bottom: 10px;
     z-index: +1;
     display: flex;
@@ -215,7 +215,7 @@ export default {
     > i {
       position: absolute;
       right: -10px;
-      color: inherit;
+      color: var(--light-gray);;
     }
   }
   .warning {
@@ -233,29 +233,29 @@ export default {
   }
 
   .icon {
-    font-size: 18px;
-    width: 15px;
-    height: 18px;
-    margin-right: 10px;
-    color: var(--light-gray);
-    fill: var(--light-gray);
+    width: 20px;
+    height: 22px;
+    margin-right: 15px;
+    color: var(--darker-gray);
+    fill: var(--darker-gray);
 
     /* Forces left-alignment of material-icons */
     display: inline-flex;
     justify-content: flex-end;
     align-items: center;
-    vertical-align: -5px;
+    vertical-align: -7px;
   }
 
   button.sign-out {
     width: 100%;
     text-align: left;
-    padding: 5px 0;
+    padding: 11px 0 11px 10px;
   }
 
   .sign-out:hover,
   .user-is-tabbing .sign-out:focus {
-    color: var(--accent);
+    background-color: #DDE3E6; // rgba(var(--lighter-gray), 0.5);
+    border-radius: var(--border-radius);
 
     .icon {
       color: currentColor;

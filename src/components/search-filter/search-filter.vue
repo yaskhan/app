@@ -340,15 +340,15 @@ export default {
   }
 
   .search-filter {
-    margin-right: 10px;
+    // margin-right: 10px;
     position: relative;
 
     .search {
       width: 100%;
       height: var(--input-height);
-      border-radius: var(--border-radius);
+      border-radius: 20px;
       display: block;
-      border: 0;
+      border: 2px solid var(--lighter-gray);
       color: var(--gray);
       padding: 10px;
       line-height: 1.5;
@@ -364,12 +364,12 @@ export default {
 
       &:focus {
         color: var(--darker-gray);
-        border-color: var(--accent);
+        border-color: var(--darker-gray);
         outline: 0;
       }
 
       &:focus + i {
-        color: var(--accent);
+        color: var(--darker-gray);
       }
 
       &:-webkit-autofill {
@@ -415,7 +415,7 @@ export default {
 
         &:hover,
         .user-is-tabbing &:focus {
-          color: var(--accent);
+          color: var(--darker-gray);
         }
 
         &::after {
@@ -458,7 +458,7 @@ export default {
     &.open {
       .toggle {
         i {
-          color: var(--accent);
+          color: var(--darker-gray);
         }
       }
 

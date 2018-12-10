@@ -75,15 +75,17 @@ export default {
 <style lang="scss" scoped>
 .project-switcher > div {
   height: calc(
-    var(--header-height) + 1px
+    var(--header-height) - 20px
   ); /* Force border bottom to be aligned with listing headers */
   width: 100%;
   border-bottom: 1px solid var(--lightest-gray);
   display: flex;
   align-items: center;
-  color: var(--accent);
-  margin-bottom: 10px;
+  margin: 20px 0 30px;
+  padding: 0 5px 0 10px;
   position: relative;
+  background-color: #DDE3E6; // rgba(var(--lighter-gray), 0.5);
+  border-radius: var(--border-radius);
 
   &.slow {
     color: var(--warning);
@@ -106,11 +108,11 @@ export default {
   }
 
   svg {
-    fill: var(--accent);
+    fill: var(--darker-gray);
   }
 
   i {
-    color: var(--accent);
+    color: var(--light-gray);
   }
 
   span {
@@ -121,9 +123,9 @@ export default {
 }
 
 .icon {
-  width: 15px;
+  width: 18px;
   height: 18px;
-  margin-right: 10px;
+  margin-right: 15px;
   color: var(--light-gray);
   fill: var(--light-gray);
 }

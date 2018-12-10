@@ -90,17 +90,18 @@ export default {
 
 <style scoped lang="scss">
 .v-header {
-  background-color: var(--darkest-gray);
+  background-color: var(--white);
   position: fixed;
   width: 100%;
   right: 0;
   top: 0;
-  height: 4.62rem;
+  height: 4.286rem;
   color: var(--white);
   display: flex;
   align-items: center;
   z-index: 20;
   padding-left: 20px;
+  padding-right: 20px;
 
   @media (min-width: 800px) {
     padding-left: calc(var(--nav-sidebar-width) + 20px);
@@ -127,7 +128,7 @@ export default {
   .title {
     color: var(--gray);
     font-size: 1.38em;
-    line-height: 1.16;
+    line-height: 1.06;
     font-weight: 400;
     height: 20px;
     flex-grow: 1;
@@ -147,7 +148,7 @@ export default {
       &:not(:last-child)::after {
         content: "chevron_right";
         font-family: "Material Icons";
-        color: var(--dark-gray);
+        color: var(--light-gray);
         display: inline-block;
         vertical-align: middle;
         margin: 0 5px;
@@ -158,14 +159,15 @@ export default {
       text-decoration: none;
       &:hover,
       .user-is-tabbing &:focus {
-        color: var(--white);
+        color: var(--darker-gray);
       }
     }
   }
 
   h1.title,
   .title h1 {
-    color: var(--white);
+    display: block;
+    color: var(--darker-gray);
   }
 }
 </style>

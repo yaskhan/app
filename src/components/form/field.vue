@@ -153,7 +153,7 @@ label,
 legend {
   text-transform: none;
   color: var(--darker-gray);
-  font-size: 1.2rem;
+  font-size: 1.143rem;
   line-height: 1.1;
   font-weight: 400;
   text-overflow: ellipsis;
