@@ -403,13 +403,15 @@ export default {
     },
     formatParams() {
       let params = {
-        fields: "*.*",
         meta: "total_count,result_count",
         limit: 50,
         offset: 50 * this.items.page
       };
 
       Object.assign(params, this.viewQuery);
+
+      // The above viewquery can override the fields. We want to force load all the fields so we don't end up with missing crucial data
+      params.fields = "*.*.*";
 
       if (this.searchQuery) {
         params.q = this.searchQuery;
@@ -420,54 +422,6 @@ export default {
           ...params,
           ...formatFilters(this.filters)
         };
-      }
-
-      if (params.fields) {
-        // Make sure all selected fields are retrieved one level deep (to be able to show relational
-        //  items)
-        params.fields = params.fields
-          .split(",")
-          .map(field => {
-            if (field === "*.*") return field;
-
-            const fieldInfo = this.fields[field];
-
-            if (!fieldInfo) return null;
-
-            fieldInfo.type = fieldInfo.type.toLowerCase();
-
-            if (
-              fieldInfo.type === "m2o" ||
-              fieldInfo.type === "o2m" ||
-              fieldInfo.type === "m2m" ||
-              fieldInfo.type === "translation"
-            ) {
-              return field.endsWith(".*.*") ? field : field + ".*.*";
-            }
-
-            return field;
-          })
-          .filter(field => field);
-
-        // Make sure the sort field gets fetched too
-        if (this.sortField) {
-          params.fields.push(this.sortField);
-        }
-
-        // Make sure the status field gets fetched too
-        if (this.statusField) {
-          params.fields.push(this.statusField);
-        }
-
-        // Make sure the user_created field gets fetched too
-        if (this.userCreatedField) {
-          params.fields.push(this.userCreatedField);
-        }
-
-        // Make sure the primaryKey is always fetched
-        if (params.fields.includes(this.primaryKeyField) === false) {
-          params.fields.push(this.primaryKeyField);
-        }
       }
 
       return params;

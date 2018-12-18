@@ -172,6 +172,10 @@
               <v-toggle v-model="primary_key" :disabled="primaryKeyDisabled" />
               {{ $t("primary_key") }}
             </label>
+            <label class="toggle" v-if="isNumeric">
+              <v-toggle v-model="signed" />
+              {{ $t("signed") }}
+            </label>
           </div>
         </details>
       </form>
@@ -473,6 +477,7 @@ export default {
       hidden_detail: false,
       hidden_browse: false,
       primary_key: false,
+      signed: true,
 
       length: null,
       default_value: null,
@@ -684,8 +689,13 @@ export default {
     },
     relation() {
       if (!this.selectedInterfaceInfo) return null;
-      if (!this.selectedInterfaceInfo.relation == null) return null;
-      return this.selectedInterfaceInfo.relation;
+      if (!this.selectedInterfaceInfo.relation) return null;
+
+      if (typeof this.selectedInterfaceInfo.relation === "string") {
+        return this.selectedInterfaceInfo.relation;
+      }
+
+      return this.selectedInterfaceInfo.relation.type;
     },
     buttons() {
       let disabled = false;
@@ -766,6 +776,9 @@ export default {
 
       if (index === -1) return 0;
       return index;
+    },
+    isNumeric() {
+      return this.type === "integer";
     }
   },
   created() {
@@ -965,13 +978,16 @@ export default {
         hidden_detail: this.hidden_detail,
         hidden_browse: this.hidden_browse,
         primary_key: this.primary_key,
-        length: this.length,
         validation: this.validation
         // translation: this.translation, < Haven't implemented that yet
       };
 
-      if (this.lengthDisabled) {
-        delete fieldInfo.length;
+      if (this.lengthDisabled === false) {
+        fieldInfo.length = this.length;
+      }
+
+      if (this.isNumeric === true) {
+        fieldInfo.signed = this.signed;
       }
 
       this.saving = true;
@@ -1140,7 +1156,7 @@ export default {
 
           this.relationInfoM2M[0].junction_field = Object.values(
             Object.values(this.collections)[0].fields
-          )[1].field;
+          )[0].field;
 
           this.relationInfoM2M[1].collection_many = Object.keys(
             this.collections
@@ -1148,7 +1164,7 @@ export default {
 
           this.relationInfoM2M[1].field_many = Object.values(
             Object.values(this.collections)[0].fields
-          )[1].field;
+          )[0].field;
 
           this.relationInfoM2M[1].collection_one = Object.keys(
             this.collections
@@ -1157,6 +1173,19 @@ export default {
           this.relationInfoM2M[1].junction_field = Object.values(
             Object.values(this.collections)[0].fields
           )[0].field;
+
+          // Recommended relationships
+          // Interfaces can recommend a related collection. For example, the files
+          // interface will recommend the collection_many to be directus_files
+          // in order to make it easier for the user to setup the interface
+          if (
+            this.selectedInterfaceInfo.relation &&
+            typeof this.selectedInterfaceInfo.relation === "object"
+          ) {
+            if (this.selectedInterfaceInfo.relation.relatedCollection) {
+              this.relationInfoM2M[1].collection_one = this.selectedInterfaceInfo.relation.relatedCollection;
+            }
+          }
         }
       }
     },
