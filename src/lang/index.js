@@ -1,7 +1,8 @@
 import Vue from "vue";
 import VueI18n from "vue-i18n";
 
-import enUS, { dateTimeFormats } from "./locales/en-US";
+import enUS from "./locales/en-US/text.json";
+import dateTimeFormats from "./locales/en-US/date.json";
 
 Vue.use(VueI18n);
 
@@ -39,14 +40,15 @@ function setI18nLanguage(lang) {
 export function loadLanguageAsync(lang) {
   if (i18n.locale !== lang) {
     if (!loadedLanguages.includes(lang)) {
-      return import(/* webpackChunkName: "lang-[request]" */ `@/lang/locales/${lang}`).then(
-        msgs => {
-          i18n.setLocaleMessage(lang, msgs.default);
-          i18n.setDateTimeFormat(lang, msgs.dateTimeFormats);
-          loadedLanguages.push(lang);
-          return setI18nLanguage(lang);
-        }
-      );
+      Promise.all([
+        import(/* webpackChunkName: "text-[request]" */ `@/lang/locales/${lang}/text.json`),
+        import(/* webpackChunkName: "date-[request]" */ `@/lang/locales/${lang}/date.json`)
+      ]).then(([messages, dateTimeFormats]) => {
+        i18n.setLocaleMessage(lang, messages.default);
+        i18n.setDateTimeFormat(lang, dateTimeFormats.default);
+        loadedLanguages.push(lang);
+        return setI18nLanguage(lang);
+      });
     }
     return Promise.resolve(setI18nLanguage(lang));
   }
