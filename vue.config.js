@@ -1,3 +1,5 @@
+const path = require("path");
+
 module.exports = {
   configureWebpack: {
     name: path.resolve(__dirname, "Directus"),
