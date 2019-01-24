@@ -1,7 +1,7 @@
 module.exports = {
   root: true,
   parserOptions: {
-    sourceType: "script",
+    sourceType: "module",
   },
   extends: ["plugin:vue/recommended", "prettier", "prettier/vue"],
   rules: {
