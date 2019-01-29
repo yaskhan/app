@@ -1,18 +1,18 @@
 # Repo Architecture
 
-* [docs](#docs)
-* [public](#public)
-  * [index.html](#index.html)
-* [src](#src)
-  * [assets](#assets)
-  * [components](#components)
-  * [design](#design)
-  * [router](#router)
-  * [state](#state)
-  * [utils](#utils)
-* [app.vue](#app.vue)
-* [main.js](#main.js)
-* [vue.config.js](#vue.config.js)
+- [docs](#docs)
+- [public](#public)
+  - [index.html](#index.html)
+- [src](#src)
+  - [assets](#assets)
+  - [components](#components)
+  - [design](#design)
+  - [router](#router)
+  - [state](#state)
+  - [utils](#utils)
+  - [app.vue](#app.vue)
+  - [main.js](#main.js)
+- [vue.config.js](#vue.config.js)
 
 ## docs
 

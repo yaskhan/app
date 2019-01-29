@@ -2,7 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import routes from "./routes";
 
-Vue.user(VueRouter);
+Vue.use(VueRouter);
 
 const router = new VueRouter({
   routes,
@@ -17,3 +17,5 @@ const router = new VueRouter({
     }
   },
 });
+
+export default router;

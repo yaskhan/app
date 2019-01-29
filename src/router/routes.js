@@ -6,8 +6,8 @@ export default [
   // },
   {
     path: "/404",
-    name: "404",
-    component: require("@views/_404").default,
+    name: "not-found",
+    component: require("@views/not-found").default,
     // Allows props to be passed to the 404 page through route params so we can
     // define what wasn't found
     props: true,
