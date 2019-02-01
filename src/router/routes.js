@@ -1,21 +1,13 @@
 export default [
-  // {
-  //   path: "/login",
-  //   mame: "login",
-  //   component: () => lazyLoadView(import("@views/login"))
-  // },
   {
-    path: "/404",
-    name: "not-found",
-    component: require("@views/not-found").default,
-    // Allows props to be passed to the 404 page through route params so we can
-    // define what wasn't found
-    props: true,
+    path: "/login",
+    mame: "login",
+    component: require("@views/public/login").default,
   },
-  // Redirect any unmatched routes to the 404 page
   {
     path: "*",
-    redirect: "404",
+    name: "not-found",
+    component: require("@views/not-found").default,
   },
 ];
 

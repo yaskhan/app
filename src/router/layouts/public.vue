@@ -21,3 +21,15 @@ export default {
   name: "Public",
 };
 </script>
+
+<style lang="scss">
+.container {
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-primary);
+}
+
+.window {
+  background-color: var(--white);
+}
+</style>
