@@ -1,6 +1,6 @@
 # Building & Deploying
 
-```
+```bash
 # Build for production with minification
 npm run build
 ```

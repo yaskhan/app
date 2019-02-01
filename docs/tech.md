@@ -1,17 +1,17 @@
 # Languages & Technologies
 
-* [JavaScript](#javascript)
-  * [Polyfills](#polyfills)
-  * [Vue](#vue)
-  * [Vue Router](#vue-router)
-  * [Vuex (state management)](#vuex-state-management)
-* [HTML](#html)
-* [CSS](#css)
-  * [SCSS](#scss)
-  * [Importing global modules](#importing-global-modules)
-  * [Referencing aliased asset URLs](#referencing-aliased-asset-urls)
-  * [Design variables and tooling](#design-variables-and-tooling)
-  * [Global CSS](#global-css)
+- [JavaScript](#javascript)
+  - [Polyfills](#polyfills)
+  - [Vue](#vue)
+  - [Vue Router](#vue-router)
+  - [Vuex (state management)](#vuex-state-management)
+- [HTML](#html)
+- [CSS](#css)
+  - [SCSS](#scss)
+  - [Importing global modules](#importing-global-modules)
+  - [Referencing aliased asset URLs](#referencing-aliased-asset-urls)
+  - [Design variables and tooling](#design-variables-and-tooling)
+  - [Global CSS](#global-css)
 
 ## JavaScript
 
@@ -101,7 +101,7 @@ Just those features cover at least 95% of use cases.
 To import files from `node_modules`, Webpack's [css-loader](https://github.com/webpack-contrib/css-loader) requires adding `~` to the beginning of a module name to denote that it's a global (not relative) file reference. For example:
 
 ```scss
-@import '~nprogress/nprogress.css';
+@import "~nprogress/nprogress.css";
 ```
 
 ### Referencing aliased asset URLs
@@ -109,7 +109,7 @@ To import files from `node_modules`, Webpack's [css-loader](https://github.com/w
 Similarly to importing global modules, referencing aliased assets also requires the `~` at the beginning of the name. For example:
 
 ```scss
-background: url('~@assets/images/background.png');
+background: url("~@assets/images/background.png");
 ```
 
 ### Design variables and tooling
@@ -117,7 +117,7 @@ background: url('~@assets/images/background.png');
 All our [variables](https://sass-lang.com/guide#topic-2), [placeholder classes](https://sass-lang.com/guide#topic-7), [mixins](https://sass-lang.com/guide#topic-6), and other design tooling are in the `src/design` folder. Each of these files define variables, prefixed with the name of the file, then combined in `src/design/index.scss`. This combined file is aliased as `@design` for convenience and can be imported into SCSS using:
 
 ```scss
-@import '@design';
+@import "@design";
 ```
 
 This makes all our design variables available in your component or SCSS file.
@@ -127,4 +127,3 @@ This makes all our design variables available in your component or SCSS file.
 ### Global CSS
 
 Typically, only [`src/app.vue`](../src/app.vue) should ever contain global CSS and even that should only include base element styles and utility classes.
-

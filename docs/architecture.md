@@ -42,7 +42,7 @@ Where most of the components of the app live, [including the global base compone
 
 ### design
 
-Where we keep all the SCSS variables / CSS Custom Properties that are used in the application.
+Where we keep all the CSS Custom Properties that are used in the application.
 
 ### router
 
