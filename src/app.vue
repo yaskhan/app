@@ -18,4 +18,7 @@ export default {
 // Normalize default styles across browsers,
 // https://necolas.github.io/normalize.css/
 @import "~normalize.css/normalize.css";
+
+// Import all the global CSS Custom Properties so they can be used in the components
+@import "@design";
 </style>
