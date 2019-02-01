@@ -16,7 +16,7 @@
     "fix:prettier": "prettier --write --loglevel warn",
     "fix:all:eslint": "npm run fix:eslint --ext .js,.vue .",
     "fix:all:stylelint": "npm run fix:stylelint \"src/**/*.{vue,scss}\"",
-    "fix:all:markdownlint": "npm run fix:markdown \"**/*.md\" \"*.md\"",
+    "fix:all:markdownlint": "npm run fix:markdownlint \"docs/*.md\" \"readme.md\"",
     "fix:all:prettier": "npm run fix:prettier \"**/*.{js,json,css,scss,vue,html,md}\"",
     "fix": "run-s fix:all:*"
   },
