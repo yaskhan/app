@@ -60,6 +60,7 @@
   "dependencies": {
     "@directus/format-title": "^2.2.1",
     "@directus/sdk-js": "^5.1.4",
+    "axios": "^0.18.0",
     "lodash": "^4.17.11",
     "normalize.css": "^8.0.1",
     "vue": "^2.5.22",

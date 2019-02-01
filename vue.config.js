@@ -17,9 +17,28 @@ module.exports = {
         "@design": path.resolve(__dirname, "src/design/index.scss"),
       },
     },
+    module: {
+      rules: [
+        {
+          // Allow and ignore <docs> tags in .vue single file components
+          resourceQuery: /blockType=docs/,
+          loader: "ignore-loader",
+        },
+      ],
+    },
   },
   css: {
     // Enable CSS source maps.
     sourceMap: true,
   },
 };
+onfigureWebpack: {
+  module: {
+    rules: [
+      {
+        resourceQuery: /blockType=docs/,
+        loader: "ignore-loader",
+      },
+    ];
+  }
+}

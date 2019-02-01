@@ -4,11 +4,13 @@ _These are NOT the docs about using Directus, for those please see [https://docs
 
 ## Table of Contents
 
-* [Repo Architecture](./architecture.md)
-* [Setup & Development](./development.md)
-* [Linting & Formatting](./linting.md)
-* [Building & Deploying](./production.md)
-* [Routing, layouts, views](./routing.md)
-* [State management](./state.md)
-* [Languages & Technologies](./tech.md)
-* [Troubleshooting](./troubleshooting.md)
+- [Repo Architecture](./architecture.md)
+- [Design (Variables)](./design.md)
+- [Setup & Development](./development.md)
+- [Linting & Formatting](./linting.md)
+- [Building & Deploying](./production.md)
+- [Routing, layouts, views](./routing.md)
+- [Single File Componetns](./sfc.md)
+- [State management](./state.md)
+- [Languages & Technologies](./tech.md)
+- [Troubleshooting](./troubleshooting.md)
