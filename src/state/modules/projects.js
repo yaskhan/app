@@ -33,8 +33,29 @@ export const mutations = {
       project_logo: null,
     }));
 
-    // Set the current project to the first in the config file
-    state.current = projectURLs[0];
+    // If the `project` query param is active, use that url as the current one
+    // instead.
+    // TODO: HOW DO WE GET THE PROJECT QUERY
+    const projectQuery = "https://rijks.website";
+
+    if (projectQuery) {
+      // If the application is allowed to use any URL, set it immediately
+      if (config.allowOtherProject === true) {
+        state.current = projectQuery;
+      } else {
+        // Otherwise, check if the url in the query param is in the array of
+        // allowed projects
+        if (projectURLs.includes(projectQuery)) {
+          state.current = projectQuery;
+        } else {
+          // TODO: throw a notification saying this API url isn't allowed
+          alert("This Project URL isn't allowed to be used by this application");
+        }
+      }
+    } else {
+      // Set the current project to the first in the config file
+      state.current = projectURLs[0];
+    }
   },
 
   // When the information about a single project is being fetched
