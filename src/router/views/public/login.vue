@@ -2,13 +2,12 @@
 </docs>
 
 <template>
-  <Layout>
-    <h1>Login</h1>
-  </Layout>
+  <Layout> </Layout>
 </template>
 
 <script>
 import Layout from "@layouts/public";
+import { mapState } from "vuex";
 
 export default {
   name: "Login",
