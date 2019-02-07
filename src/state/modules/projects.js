@@ -6,6 +6,7 @@
 
 import axios from "axios";
 import _ from "lodash";
+import getQueryFromUrl from "@utils/get-query-from-url";
 
 const config = window.__DirectusConfig__;
 const projectURLs = config.projects;
@@ -34,9 +35,10 @@ export const mutations = {
     }));
 
     // If the `project` query param is active, use that url as the current one
-    // instead.
-    // TODO: HOW DO WE GET THE PROJECT QUERY
-    const projectQuery = "https://rijks.website";
+    // instead
+    const urlQuery = getQueryFromUrl(window.location.href);
+
+    const projectQuery = urlQuery.project;
 
     if (projectQuery) {
       // If the application is allowed to use any URL, set it immediately
