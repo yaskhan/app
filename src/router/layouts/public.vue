@@ -63,6 +63,10 @@ export default {
   background-color: var(--white);
   border-radius: var(--border-radius);
   transform: translateY(-50%);
+
+  h1 {
+    font: var(--font-extra-large);
+  }
 }
 
 .logo {
