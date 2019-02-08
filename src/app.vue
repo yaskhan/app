@@ -7,6 +7,32 @@
 <script>
 export default {
   name: "Directus",
+  created() {
+    // If the app loads with the project query parameter included, switch the
+    // project in use to the one provided in the query parameter
+    if (this.$route.query.project) {
+      this.$store.dispatch("projects/setCurrent", this.$route.query.project);
+
+      // Get rid of the project query parameter in the url
+      const newQuery = Object.assign({}, this.$route.query);
+      delete newQuery.project;
+      this.$router.replace({
+        query: newQuery,
+      });
+
+      // If the sdk was already logged in...
+      if (this.$api.loggedIn) {
+        // Logout of the api and forget the used url and project
+        this.$api.reset();
+
+        // Clear the store so we don't end up with conflicting cached data
+        this.$store.dispatch("reset");
+
+        // Redirect to the login view
+        this.$router.push({ name: "login" });
+      }
+    }
+  },
 };
 </script>
 

@@ -6,7 +6,7 @@
 
 import axios from "axios";
 import _ from "lodash";
-import getQueryFromUrl from "@utils/get-query-from-url";
+import router from "@router";
 
 const config = window.__DirectusConfig__;
 const projectURLs = config.projects;
@@ -23,46 +23,18 @@ export const getters = {
 };
 
 export const mutations = {
-  // Setup the initial structure of the state
-  INIT(state) {
-    // Create a state object for each possible project
-    state.data = projectURLs.map((url) => ({
-      url: url,
-      loading: false,
-      error: null,
-      project_name: null,
-      project_logo: null,
-    }));
-
-    // If the `project` query param is active, use that url as the current one
-    // instead
-    const urlQuery = getQueryFromUrl(window.location.href);
-
-    const projectQuery = urlQuery.project;
-
-    if (projectQuery) {
-      // If the application is allowed to use any URL, set it immediately
-      if (config.allowOtherProject === true) {
-        state.current = projectQuery;
-      } else {
-        // Otherwise, check if the url in the query param is in the array of
-        // allowed projects
-        if (projectURLs.includes(projectQuery)) {
-          state.current = projectQuery;
-        } else {
-          // TODO: throw a notification saying this API url isn't allowed
-          alert("This Project URL isn't allowed to be used by this application");
-        }
-      }
-    } else {
-      // Set the current project to the first in the config file
-      state.current = projectURLs[0];
-    }
-  },
-
   // When the information about a single project is being fetched
   PROJECT_PENDING(state, url) {
-    updateProject(state, url, { loading: true });
+    state.data = [
+      ...state.data,
+      {
+        url: url,
+        loading: true,
+        error: null,
+        project_name: null,
+        project_logo: null,
+      },
+    ];
   },
 
   // When the info of a single project has been returned
@@ -85,23 +57,34 @@ export const mutations = {
 export const actions = {
   // Will be run automatically on app startup
   init({ commit, dispatch }) {
-    commit("INIT");
-
     // For each of the project URLs, fetch the other required data (eg name, logo)
-    projectURLs.forEach((url) => {
-      commit("PROJECT_PENDING", url);
-
-      return axios
-        .get(url)
-        .then((res) => res.data.data.api)
-        .then((info) => commit("PROJECT_SUCCESS", { url, ...info }))
-        .catch((error) => commit("PROJECT_FAILURE", { url, error }));
-    });
+    projectURLs.forEach((url) => dispatch("fetchProject", url));
+    dispatch("setCurrent", projectURLs[0]);
   },
 
   // Set the currently in use API URL
-  setCurrent({ commit }, url) {
+  setCurrent({ commit, dispatch }, url) {
+    if (projectURLs.includes(url) === false) {
+      if (config.allowOtherProject === false) {
+        alert("This Project URL isn't allowed to be used by this application");
+        return;
+      }
+
+      dispatch("fetchProject", url);
+    }
+
     commit("SET_CURRENT", url);
+  },
+
+  // Fetch the information for a given project
+  fetchProject({ commit }, url) {
+    commit("PROJECT_PENDING", url);
+
+    return axios
+      .get(url)
+      .then((res) => res.data.data.api)
+      .then((info) => commit("PROJECT_SUCCESS", { url, ...info }))
+      .catch((error) => commit("PROJECT_FAILURE", { url, error }));
   },
 };
 

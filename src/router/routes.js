@@ -1,8 +1,11 @@
 export default [
   {
     path: "/login",
-    mame: "login",
+    name: "login",
     component: require("@views/public/login").default,
+    meta: {
+      publicRoute: true,
+    },
   },
   {
     path: "*",

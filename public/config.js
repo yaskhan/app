@@ -4,7 +4,7 @@
   const config = {
     projects: ["https://next.demo-api.directus.app/_/"],
 
-    allowOtherProject: false,
+    allowOtherProject: true,
   };
 
   window.__DirectusConfig__ = config;
