@@ -90,6 +90,10 @@ input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 30px white inset;
 }
 
+img {
+  max-width: 100%;
+}
+
 #app {
   position: relative;
   width: 100%;
