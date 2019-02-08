@@ -26,7 +26,7 @@ export default {
 .container {
   width: 100%;
   height: 100%;
-  background-color: var(--color-primary);
+  background-color: var(--blue-gray-900);
 }
 
 .window {

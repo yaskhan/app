@@ -89,4 +89,10 @@ button {
 input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 30px white inset;
 }
+
+#app {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
 </style>
