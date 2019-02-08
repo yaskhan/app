@@ -1,3 +1,26 @@
 :root {
-  --primary: var(--red);
+  --accent: var(--light-blue-600);
+  --success: var(--green-500);
+  --warning: var(--amber-500);
+  --danger: var(--red-500);
+  --module-bg: var(--blue-gray-900);
+  --module-bg-active: var(--black);
+  --module-bg-hover: var(--module-bg);
+  --module-fg: var(--blue-gray-300);
+  --module-fg-active: var(--blue-gray-50);
+  --module-fg-hover: var(--blue-gray-50);
+
+  // Main page colors
+  --page-bg: var(--white);
+  --page-50: var(--blue-gray-50);
+  --page-100: var(--blue-gray-100);
+  --page-200: var(--blue-gray-200);
+  --page-300: var(--blue-gray-300);
+  --page-400: var(--blue-gray-400);
+  --page-500: var(--blue-gray-500);
+  --page-600: var(--blue-gray-600);
+  --page-700: var(--blue-gray-700);
+  --page-800: var(--blue-gray-800);
+  --page-900: var(--blue-gray-900);
+  --brand-bg: var(--module-bg);
 }
